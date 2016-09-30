@@ -1,0 +1,84 @@
+ <html>
+    <head>
+	<title>EECS 448 Store</title>
+    <style>
+	body{ background-color: #CCFFFF;}
+	h3{ color: white;
+		background-image: url(boardgames.jpg);
+		background-size: 25%;
+		font-family: Georgia;
+		font-size: 300%}
+	h5{ color: DarkBlue;
+		font-family: Georgia;
+		font-size: 100%;}
+	form{ border-width: thin;
+		border-color: blue;
+		font-family: Georgia;
+		font-size: 100%;}
+    </style>
+    <script>
+	//cannot get the page to run the js first
+	function formChecker() {
+		//validates input from the user before submitting
+		//quantities cannot be blank or negative
+		//username must be in the form of an email address
+		//password field cannot be blank, there is no check against the password
+
+		var emailTag = document.getElementById("emailAddressid").value;
+		var YahtzeeTag = document.getElementById("numYahtzeeid").value;
+		var ArkhamTag = document.getElementById("numArkhamid").value;
+		var MunchkinTag = document.getElementById("numMunchkinid").value;
+		var HumanityTag = document.getElementById("numHumanityid").value;
+		var SupremacyTag = document.getElementById("numSupremacyid").value;
+		var NuclearTag = document.getElementById("numNuclearid").value;
+		var products = [YahtzeeTag, ArkhamTag, MunchkinTag, HumanityTag, SupremacyTag, NuclearTag];
+		
+		for(var i = 0; i < 6; i++){
+			if(products[i] < 0 || products[i] == ""){
+				alert("a value is negative");
+				return false;
+			}
+		}
+                
+                if(!(emailTag.contains("@") && (emailTag.contains(".edu") || emailTag.contains(".com")))){
+                    alert("must login with an email adress");
+                    return false;
+                }
+	
+	
+        return true;	
+	}
+    </script>
+    </head>
+    <body>
+	<h3>Rebekah's Board Games!</h3>
+	<h5>Bord games are listed below with their prices<br>
+		Please choose the number of each game you would like to purchase for each item<br>
+		Then choose the type of shipping and click 'Submit Order' to process your order and review the reciept</h5>
+        <form method="post" onsubmit=" return formChecker()" action="store.php">
+	    Email Address:
+	    <input id="emailAddressid" type="text" name="emailAddress">
+	    Password: 
+	    <input id="passwordid" type="password" name="password"><br><br><br>
+	    Yahtzee - $13.99   ____________
+	    <input id="numYahtzeeid" type="number" name="numYahtzee" value=0><br>
+	    Arkham Horror - $64.99 _______
+	    <input id="numArkhamid" type="number" name="numArkham" value=0><br>
+	    Munchkin Zombies - $25.99_____
+	    <input id="numMunchkinid"type="number" name="numMunchkin" value=0><br>
+	    Cards Against Humanity - $30.99_
+	    <input id="numHumanityid" type="number" name="numHumanity" value=0><br>
+	    Supremacy - $15.99 __________
+	    <input id="numSupremacyid" type="number" name="numSupremacy" value=0><br>
+	    Nulcear Escalation - $22.99_____
+	    <input id="numNuclearid" type="number" name="numNuclear" value=0><br>
+	    <br>
+	    Shipping Choices<br>
+	    <input type="radio" name="shipping" value="7 day - Free" checked> 7 day - Free<br>
+	    <input type="radio" name="shipping" value="3 day - $5.00"> 3 day - $5.00<br>
+	    <input type="radio" name="shipping" value="1 day - $50.00"> 1 day - $50.00<br>
+	    <br><br>
+	    <input type="submit" name="submit"><br>
+	</form>
+    </body>
+</html>
